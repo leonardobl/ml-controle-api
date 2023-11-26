@@ -1,8 +1,10 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      POSTGRES_PASSWORD: string;
-      POSTGRES_USERNAME: string;
+      DB_HOST: string;
+      DB_PORT: string;
+      DB_USERNAME: string;
+      DB_PASSWORD: string;
     }
   }
 }

@@ -1,0 +1,57 @@
+import {
+  Column,
+  Entity,
+  Generated,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Documento } from './Documento';
+import { EstadoEquipamentoEnum } from '../enum/equipamento';
+
+@Entity('equipamentos')
+export class Equipamento {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column({ type: 'text' })
+  nome: string;
+
+  @Column({ type: 'text' })
+  modelo: string;
+
+  @Column({ type: 'text' })
+  num_serie: string;
+
+  @Column({ type: 'text', nullable: true })
+  num_patrimonio: string;
+
+  @Column({ type: 'text', nullable: true })
+  num_os: string;
+
+  @Column({ type: 'text', nullable: true })
+  mac: string;
+
+  @Column({ type: 'text', nullable: true })
+  cod_barras: string;
+
+  @Column({ type: 'text', nullable: true })
+  tipo_equipamento: string;
+
+  @Column({ type: 'text', nullable: true })
+  observacoes: string;
+
+  @Column({ type: 'time with time zone', nullable: true })
+  data_transferencia: Date;
+
+  @OneToMany(() => Documento, doc => doc.equipamento)
+  documentos: Documento[];
+
+  @Column({ type: 'enum', enum: EstadoEquipamentoEnum })
+  estado: EstadoEquipamentoEnum;
+
+  @Column({ type: 'time with time zone' })
+  createdAt: Date;
+
+  @Column({ type: 'time with time zone' })
+  updatedAt: Date;
+}
