@@ -8,5 +8,5 @@ export const dataSource = new DataSource({
   password: 'magazine123',
   database: 'ml-controle',
   // entities: [Users, Devices],
-  migrations: [],
+  migrations: ['@shared' + '\\infra\\typeorm\\migrations\\*.ts'],
 });
