@@ -8,7 +8,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Documento } from './Documento';
-import { EstadoEquipamentoEnum } from '../enum/equipamento';
+import {
+  EstadoEquipamentoEnum,
+  TipoEquipamentoEnum,
+} from '../enum/equipamento';
 
 @Entity('equipamentos')
 export class Equipamento {
@@ -36,8 +39,8 @@ export class Equipamento {
   @Column({ type: 'text', nullable: true })
   cod_barras: string;
 
-  @Column({ type: 'text', nullable: true })
-  tipo_equipamento: string;
+  @Column({ type: 'enum', enum: TipoEquipamentoEnum, nullable: true })
+  tipo_equipamento: TipoEquipamentoEnum;
 
   @Column({ type: 'text', nullable: true })
   observacoes: string;
