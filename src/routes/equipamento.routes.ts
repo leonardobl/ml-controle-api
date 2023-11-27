@@ -5,8 +5,8 @@ export const routesEquipamentos = Router();
 
 const controller = new EquipamentoController();
 
-routesEquipamentos.get('/equipamentos', (req, res) => {
-  return res.json({ message: 'Chegou aqui' });
+routesEquipamentos.get('/equipamentos', async (req, res) => {
+  return await controller.list(req, res);
 });
 
 routesEquipamentos.post('/equipamento', async (req, res) => {

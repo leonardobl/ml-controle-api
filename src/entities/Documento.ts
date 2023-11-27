@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import { TiposDeDocumentoEnum } from '../enum/documento';
 import { Equipamento } from './Equipamento';
+import { ForeignKeyMetadata } from 'typeorm/metadata/ForeignKeyMetadata';
 
 @Entity('documentos')
 export class Documento {
@@ -23,7 +24,6 @@ export class Documento {
   file: string;
 
   @ManyToOne(() => Equipamento, equi => equi.documentos)
-  @JoinColumn({ name: 'doc_id' })
   equipamento: Equipamento;
 
   @CreateDateColumn({ type: 'time with time zone' })

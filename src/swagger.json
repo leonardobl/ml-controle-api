@@ -1,0 +1,99 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API para controle de estoque TI",
+    "description": "Api para fins de estudo e aprimoramento de conhecimentos alem de utildade para o controle de estoque de equipamento TI",
+    "termoOfService": "",
+    "contact": {
+      "email": "leonardo.b.lima1@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333",
+      "description": "Api de desenvolvimento"
+    }
+  ],
+  "paths": {
+    "/equipamento": {
+      "post": {
+        "summary": "Cadastro de equipamento",
+        "description": "rota para cadastro do equipamento",
+        "tags": ["Equipamento"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Equipamento"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Equipamento": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "required": true
+          },
+          "modelo": {
+            "type": "string",
+            "required": true
+          },
+          "num_serie": {
+            "type": "string"
+          },
+          "num_patrimonio": {
+            "type": "string"
+          },
+          "num_os": {
+            "type": "string"
+          },
+          "mac": {
+            "type": "string"
+          },
+          "cod_barras": {
+            "type": "string"
+          },
+          "tipo_equipamento": {
+            "type": "string"
+          },
+          "observacoes": {
+            "type": "string"
+          },
+          "data_transferencia": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "string"
+          },
+          "documentos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Documento"
+            }
+          }
+        }
+      },
+      "Documento": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "required": true
+          },
+          "file": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}
