@@ -8,5 +8,9 @@ export const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDoc, { explorer: true }),
+);
 app.use(routesEquipamentos);

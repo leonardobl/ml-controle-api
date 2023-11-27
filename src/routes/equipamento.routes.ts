@@ -5,7 +5,7 @@ export const routesEquipamentos = Router();
 
 const controller = new EquipamentoController();
 
-routesEquipamentos.get('/equipamentos', async (req, res) => {
+routesEquipamentos.get('/equipamento', async (req, res) => {
   return await controller.list(req, res);
 });
 

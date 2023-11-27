@@ -26,6 +26,57 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/Equipamento"
+              },
+              "examples": {
+                "equipamento": {
+                  "value": {
+                    "nome": "Optiplex 500",
+                    "modelo": "Dell",
+                    "num_serie": "004545454d",
+                    "num_patrimonio": "865666",
+                    "num_os": "12345",
+                    "mac": "00:1B:44:11:3A:B7",
+                    "data_transferencia": "12:44:11.539629+00",
+                    "cod_barras": "5655646556532346",
+                    "tipo_equipamento": "DESKTOP",
+                    "observacoes": "isso e apenas um teste",
+                    "estado": "BACKUP"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/EquipamentoRetorno"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listagem de equipamentos",
+        "description": "rota para listagem dos equipamentos",
+        "tags": ["Equipamento"],
+
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EquipamentoRetorno"
+                  }
+                }
               }
             }
           }
@@ -62,22 +113,93 @@
             "type": "string"
           },
           "tipo_equipamento": {
-            "type": "string"
+            "type": "string",
+            "enum": ["DESKTOP", "NOTEBOOK", "SWITCH", "MONITOR", "PERIFERICO"]
           },
           "observacoes": {
             "type": "string"
           },
           "data_transferencia": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "estado": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "EM_USO",
+              "BACKUP",
+              "COM_DEFEITO",
+              "EM_MANUTENCAO",
+              "TRANSFERIDO"
+            ]
           },
           "documentos": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Documento"
             }
+          }
+        }
+      },
+      "EquipamentoRetorno": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "modelo": {
+            "type": "string"
+          },
+          "num_serie": {
+            "type": "string"
+          },
+          "num_patrimonio": {
+            "type": "string"
+          },
+          "num_os": {
+            "type": "string"
+          },
+          "mac": {
+            "type": "string"
+          },
+          "cod_barras": {
+            "type": "string"
+          },
+          "tipo_equipamento": {
+            "type": "string",
+            "enum": ["DESKTOP", "NOTEBOOK", "SWITCH", "MONITOR", "PERIFERICO"]
+          },
+          "observacoes": {
+            "type": "string"
+          },
+          "data_transferencia": {
+            "type": "string",
+            "format": "date"
+          },
+          "estado": {
+            "type": "string",
+            "enum": [
+              "EM_USO",
+              "BACKUP",
+              "COM_DEFEITO",
+              "EM_MANUTENCAO",
+              "TRANSFERIDO"
+            ]
+          },
+          "documentos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Documento"
+            }
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
           }
         }
       },
