@@ -1,9 +1,11 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
-  Generated,
+  JoinColumn,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Documento } from './Documento';
 import { EstadoEquipamentoEnum } from '../enum/equipamento';
@@ -44,14 +46,15 @@ export class Equipamento {
   data_transferencia: Date;
 
   @OneToMany(() => Documento, doc => doc.equipamento)
+  @JoinColumn({ name: 'equi_id' })
   documentos: Documento[];
 
   @Column({ type: 'enum', enum: EstadoEquipamentoEnum })
   estado: EstadoEquipamentoEnum;
 
-  @Column({ type: 'time with time zone' })
+  @CreateDateColumn({ type: 'time with time zone' })
   createdAt: Date;
 
-  @Column({ type: 'time with time zone' })
+  @UpdateDateColumn({ type: 'time with time zone' })
   updatedAt: Date;
 }

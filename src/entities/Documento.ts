@@ -1,10 +1,12 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Generated,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { TiposDeDocumentoEnum } from '../enum/documento';
 import { Equipamento } from './Equipamento';
@@ -24,9 +26,9 @@ export class Documento {
   @JoinColumn({ name: 'doc_id' })
   equipamento: Equipamento;
 
-  @Column({ type: 'time with time zone' })
+  @CreateDateColumn({ type: 'time with time zone' })
   createdAt: Date;
 
-  @Column({ type: 'time with time zone' })
+  @UpdateDateColumn({ type: 'time with time zone' })
   updatedAt: Date;
 }
