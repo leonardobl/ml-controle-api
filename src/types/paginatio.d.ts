@@ -1,6 +1,6 @@
 export interface IPaganation {
   page: number;
   size: number;
-  sizeItens: number;
-  pageSize: number;
+  numberOfItems: number;
+  numberOfPages: number;
 }

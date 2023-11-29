@@ -8,8 +8,8 @@ interface IPaginationPropsType extends IPaganation {
 export function ToPagination({
   page,
   size,
-  pageSize,
-  sizeItens,
+  numberOfItems,
+  numberOfPages,
   response,
 }: IPaginationPropsType) {
   return {
@@ -17,8 +17,8 @@ export function ToPagination({
     pagination: {
       page,
       size,
-      sizeItens,
-      pageSize,
+      numberOfItems,
+      numberOfPages,
     },
   };
 }

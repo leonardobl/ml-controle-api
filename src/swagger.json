@@ -87,9 +87,18 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/EquipamentoRetorno"
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "items": {
+                        "$ref": "#/components/schemas/EquipamentoRetorno"
+                      }
+                    },
+                    "pagination": {
+                      "items": {
+                        "$ref": "#/components/schemas/Pagination"
+                      }
+                    }
                   }
                 }
               }
@@ -259,6 +268,23 @@
           "file": {
             "type": "string",
             "required": true
+          }
+        }
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "number"
+          },
+          "size": {
+            "type": "number"
+          },
+          "numberOfPages": {
+            "type": "number"
+          },
+          "numberOfItems": {
+            "type": "number"
           }
         }
       }

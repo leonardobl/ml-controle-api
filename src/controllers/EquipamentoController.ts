@@ -30,15 +30,15 @@ export class EquipamentoController {
         take: Number(size),
       });
 
-      const sizeItens = result[1];
-      const pageSize = Math.ceil(sizeItens / Number(size));
+      const numberOfItems = result[1];
+      const numberOfPages = Math.ceil(numberOfItems / +size);
 
       const data = ToPagination({
         page: Number(page),
         size: Number(size),
-        sizeItens,
+        numberOfItems,
         response: result[0],
-        pageSize,
+        numberOfPages,
       });
 
       return res.status(200).json(data);
