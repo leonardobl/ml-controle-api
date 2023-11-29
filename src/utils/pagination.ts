@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import { IPaganation } from '../types/paginatio';
 
 interface IPaginationPropsType extends IPaganation {
@@ -20,4 +21,18 @@ export function ToPagination({
       pageSize,
     },
   };
+}
+
+export function PaginationQueryFormat(req: Request) {
+  let { page = 1, size = 5 } = req.query;
+
+  if (!Number(page)) {
+    page = 1;
+  }
+
+  if (!Number(size)) {
+    size = 5;
+  }
+
+  return { page, size };
 }

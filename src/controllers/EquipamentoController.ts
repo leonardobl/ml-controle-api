@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { EquipamentoRepository } from '../repositories/equipamentoRepository';
 import { Equipamento } from '../entities/Equipamento';
 Equipamento;
-import { ToPagination } from '../utils/pagination';
+import { PaginationQueryFormat, ToPagination } from '../utils/pagination';
 
 export class EquipamentoController {
   async create(req: Request, res: Response) {
@@ -19,14 +19,7 @@ export class EquipamentoController {
   }
 
   async list(req: Request, res: Response) {
-    let { page, size } = req.body;
-
-    if (!Number(page)) {
-      page = 1;
-    }
-    if (!Number(size)) {
-      size = 0;
-    }
+    const { page, size } = PaginationQueryFormat(req);
 
     const skip = Number(size) * Number(page) - Number(size);
 
@@ -38,7 +31,7 @@ export class EquipamentoController {
       });
 
       const sizeItens = result[1];
-      const pageSize = Math.ceil(sizeItens / size);
+      const pageSize = Math.ceil(sizeItens / Number(size));
 
       const data = ToPagination({
         page: Number(page),

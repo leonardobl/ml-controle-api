@@ -18,7 +18,7 @@
     "/equipamento": {
       "post": {
         "summary": "Cadastro de equipamento",
-        "description": "rota para cadastro do equipamento",
+        "description": "Rota para cadastro do equipamento",
         "tags": ["Equipamento"],
         "requestBody": {
           "content": {
@@ -62,19 +62,19 @@
       },
       "get": {
         "summary": "Listagem de equipamentos",
-        "description": "rota para listagem dos equipamentos",
+        "description": "Rota para listagem dos equipamentos",
         "tags": ["Equipamento"],
         "parameters": [
           {
             "name": "page",
-            "in": "path",
+            "in": "query",
             "schema": {
               "type": "number"
             }
           },
           {
             "name": "size",
-            "in": "path",
+            "in": "query",
             "schema": {
               "type": "number"
             }
