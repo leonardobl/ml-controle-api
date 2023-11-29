@@ -136,6 +136,27 @@
             }
           }
         }
+      },
+      "delete": {
+        "summary": "Delete equipamento por id",
+        "description": "rota para deletar o equipamento por id",
+        "tags": ["Equipamento"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id para ser buscado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   },
