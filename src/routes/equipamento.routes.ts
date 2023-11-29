@@ -16,3 +16,7 @@ routesEquipamentos.post('/equipamento', async (req, res) => {
 routesEquipamentos.get('/equipamento/:id', async (req, res) => {
   return await eqController.findById(req, res);
 });
+
+routesEquipamentos.delete('/equipamento/:id', async (req, res) => {
+  return await eqController.delete(req, res);
+});

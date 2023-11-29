@@ -65,4 +65,25 @@ export class EquipamentoController {
         .json({ message: 'Internal server error', dataError: error });
     }
   }
+
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+
+    if (!id)
+      return res.status(500).json({
+        message: 'Internal server error',
+        error: `Id = ${id}`,
+      });
+
+    try {
+      await EquipamentoRepository.delete(id);
+
+      return res.status(200);
+    } catch (error) {
+      return res.status(500).json({
+        message: 'Internal server error',
+        error: error,
+      });
+    }
+  }
 }
