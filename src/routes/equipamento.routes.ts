@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { EquipamentoController } from '../controllers/EquipamentoController';
+import { faker } from '@faker-js/faker';
 
 export const routesEquipamentos = Router();
 
