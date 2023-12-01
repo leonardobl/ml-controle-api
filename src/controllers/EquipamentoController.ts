@@ -1,7 +1,5 @@
 import { Request, Response } from 'express';
 import { EquipamentoRepository } from '../repositories/equipamentoRepository';
-import { Equipamento } from '../entities/Equipamento';
-Equipamento;
 import { PaginationQueryFormat, ToPagination } from '../utils/pagination';
 
 export class EquipamentoController {
